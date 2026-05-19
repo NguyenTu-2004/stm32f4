@@ -226,7 +226,7 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t EnorDi)
 void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
 {
     uint8_t iprx = IRQNumber / 4;
-    uint8_t iprx_ip = IRQNumber & 4;
+    uint8_t iprx_ip = IRQNumber % 4;
     *(NVIC_IPR_BASE + iprx) |= (IRQPriority << (8 * iprx_ip + 4));
 }
 void GPIO_IRQHandling(uint8_t PinNumber)
